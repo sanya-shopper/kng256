@@ -6,6 +6,9 @@ its two rival group structures), then through the analytic combinatorics
 of random mappings (Flajolet–Odlyzko) as a measurement instrument — and
 proposing a research program of undergraduate-sized experimental projects.
 
+**Read it online:** <https://sanya-shopper.github.io/kng256/> — the interactive
+companion site (full text, live visualizations, and the PDF).
+
 ## Build
 
 ```sh
@@ -21,12 +24,13 @@ full, with the figures rebuilt as interactive JavaScript visualizations
 the iteration funnel, hypercube-walk cutoff, ⊞-differentials, …) and every
 section/figure cross-linked to its exact page in `kng256.pdf`.
 
+- **Live:** <https://sanya-shopper.github.io/kng256/>
 - **Preview locally:** `python3 -m http.server -d docs` (the tracked
   `kng256.pdf` must be copied to `docs/kng256.pdf` once for the PDF links;
   that copy is gitignored).
-- **Deploy:** push to GitHub and set *Settings → Pages → Source: GitHub
-  Actions*. `.github/workflows/pages.yml` bundles the PDF and publishes
-  `docs/` on every push to `main`.
+- **Deploy:** automatic. `.github/workflows/pages.yml` bundles the PDF and
+  republishes `docs/` on every push to `main` (repo *Settings → Pages* is
+  set to *Source: GitHub Actions*).
 
 Math renders via KaTeX (CDN); the visualization code is dependency-free
 vanilla JS in `docs/assets/viz.js` (SHA-256 core verified against FIPS
