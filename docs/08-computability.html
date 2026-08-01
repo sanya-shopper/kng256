@@ -96,6 +96,20 @@ invents its own case analysis.</p>
   <a class="pdf-ref" href="kng256.pdf#page=50">PDF p. 50</a></figcaption>
 </figure>
 
+<figure class="viz-figure viz-extra">
+  <details class="viz-details" open>
+    <summary>Interactive: watch the CNF grow, gate by gate</summary>
+    <div class="viz" id="viz-tseitin"></div>
+  </details>
+  <figcaption>Tseitin translation, live: every gate of a narrowed
+  (\(w=8\)) <span class="sha">SHA-256</span> round becomes a fixed handful of
+  clauses, and preimage, partial-preimage, and collision questions become unit
+  pins and one inequality clause. The clause count grows linearly in
+  rounds—full <span class="sha">SHA-256</span> lands at a few hundred thousand
+  clauses, the object the SAT records below actually confront.
+  <em>(Interactive; site-only, not in the PDF.)</em></figcaption>
+</figure>
+
 <p>This is not a metaphor: the reduction is run in practice, and by now the
 solvers are genuine instruments of record. As early as 2006, Mironov and
 Zhang reproduced Wang-style MD5 collisions with an off-the-shelf
@@ -389,6 +403,14 @@ past everything computed so far. When <a class="xref" href="04-random-maps.html#
 global geometry of the functional graph is “operationally
 unreachable,” this is the industrial base against which
 “unreachable” is calibrated.</p>
+<figure class="viz-figure viz-extra">
+  <details class="viz-details" open>
+    <summary>Interactive: proof-of-work, verified on the spot</summary>
+    <div class="viz" id="viz-pow"></div>
+  </details>
+  <figcaption>The empirical scale, checked in your own browser: recompute the double-<span class="sha">SHA-256</span> of Bitcoin’s genesis block header and count its leading zero bits; then use the mini-miner to feel the exponential wall directly — each added bit of difficulty doubles the wait, and the planet currently stands ninety-seven bits up. <em>(Interactive; site-only, not in the PDF.)</em></figcaption>
+</figure>
+
 
 <p>On the side of <em>proofs</em>, the barrier theorems explain the gap of
 <a class="xref" href="06-frameworks.html#sec:gap">§6.7</a> as something deeper than a lack of effort. The
@@ -464,5 +486,6 @@ begins.</p>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 <script defer src="assets/site.js"></script>
 <script defer src="assets/viz.js"></script>
+<script defer src="assets/labs-theory.js"></script>
 </body>
 </html>

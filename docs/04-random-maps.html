@@ -77,6 +77,10 @@ every natural parameter of this picture; a sample, asymptotically as
   </tbody>
 </table>
 
+<p class="note">The census below in §4.3 points the telescope for real —
+and the <a href="#viz-silhouette">silhouette map</a> after it shows where
+structured maps land instead.</p>
+
 <p>Pause on the flavor of these results. A “typical” random map is nothing
 like a random permutation: it is lossy (a third of the space is never hit
 at all), it has one giant component swallowing three quarters of
@@ -138,6 +142,19 @@ random silhouette. Where exactly it rejoins the silhouette as rounds are
 added is, as far as we know, unmeasured—and eminently measurable
 (<a class="xref" href="09-projects.html#sec:projects">§9</a>).</p>
 
+<figure class="viz-figure viz-extra">
+  <details class="viz-details" open>
+    <summary>Interactive: where structured maps land</summary>
+    <div class="viz" id="viz-silhouette"></div>
+  </details>
+  <figcaption><strong>Interactive.</strong> The silhouette map: leaf fraction against
+  normalized component count. Bijections like \(x \shaplus c\) pin to the
+  zero-leaf wall (drag \(c\): it never leaves), squaring mod \(p\) sits
+  off-scale at leaf fraction one half, one-round SHA starts as a bijection—and
+  full-round truncated SHA is the only structured map here that lands on the
+  uniform-random reticle.</figcaption>
+</figure>
+
 <p>At full scale (\(n = 256\), \(N = 2^{256}\)) nobody will ever traverse a rho:
 the expected rho length is about \(2^{128}\) steps. The table is then the
 <em>only</em> available description of the global geometry of the object the
@@ -188,6 +205,15 @@ quite, induces a random permutation.</p>
   chosen so that \(\sqrt{N}\) is out of humanity's reach.</p>
   <div class="project-meta"><em>Prerequisites:</em> programming; probability &ensp; <em>Window:</em> 4–6 weeks</div>
 </div>
+
+
+<figure class="viz-figure viz-extra">
+  <details class="viz-details" open>
+    <summary>Interactive: the telescope, actually pointed</summary>
+    <div class="viz" id="viz-telescope"></div>
+  </details>
+  <figcaption>The functional graph of \(w\)-bit truncated <span class="sha">SHA-256</span> — every arrow a real compression computed in your browser — measured against the Flajolet–Odlyzko asymptotics of §4.1. Turn the dial for a fresh truncation instance; the statistics hold their aim. Compare the simulated random maps of Figure 7: if you can tell the two experiments apart, you have a publication. <em>(Interactive; site-only, not in the PDF.)</em></figcaption>
+</figure>
 
 <h2 id="sec:josephus3">4.4&ensp;Coda: counting to three, and the dials of <span class="sha">SHA-256</span> <a class="pdf-ref" href="kng256.pdf#page=26">PDF p. 26</a></h2>
 
@@ -263,5 +289,6 @@ neighbor.</p>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 <script defer src="assets/site.js"></script>
 <script defer src="assets/viz.js"></script>
+<script defer src="assets/labs-graphs.js"></script>
 </body>
 </html>

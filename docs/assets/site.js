@@ -4,6 +4,7 @@
 
   var PAGES = [
     { file: "index.html",          num: "",  title: "Overview & contents" },
+    { file: "explorer.html",       num: "",  title: "⚙ Round explorer (live)" },
     { file: "01-josephus.html",    num: "1", title: "A pattern where none was promised" },
     { file: "02-history.html",     num: "2", title: "The object, observed from outside" },
     { file: "03-geometry.html",    num: "3", title: "Anatomy: a self-map of a finite space" },
@@ -13,6 +14,7 @@
     { file: "07-differential.html",num: "7", title: "The adversary’s calculus: differential cryptanalysis" },
     { file: "08-computability.html",num:"8", title: "The view from computability" },
     { file: "09-projects.html",    num: "9", title: "Undergraduate short projects" },
+    { file: "timeline.html",       num: "",  title: "⧗ Timeline (alternate contents)" },
     { file: "bibliography.html",   num: "",  title: "References" }
   ];
 
@@ -61,7 +63,7 @@
           var sub = el("ul", { "class": "subnav" });
           subs.forEach(function (h) {
             var clone = h.cloneNode(true);
-            clone.querySelectorAll(".pdf-ref").forEach(function (c) { c.remove(); });
+            clone.querySelectorAll(".pdf-ref, .live-ref").forEach(function (c) { c.remove(); });
             var txt = clone.textContent.replace(/\\[()]/g, "").replace(/\s+/g, " ").trim();
             var sli = el("li", {});
             sli.appendChild(el("a", { href: "#" + h.id }, txt));

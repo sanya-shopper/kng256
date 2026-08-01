@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Timeline — SHA-256 as a Mathematical Object</title>
+<meta name="description" content="The results the paper weaves together, laid out in time with influence arrows — an alternate table of contents for the material.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="timeline.html">
+<div class="layout">
+<nav id="sidebar"></nav>
+<main id="content" style="max-width:56rem">
+<header class="page-head">
+  <p class="doc-title"><a href="index.html">SHA-256 as a Mathematical Object</a></p>
+</header>
+
+<h1 id="timeline">How we got here: a timeline of the results</h1>
+
+<p>The paper's chapters slice the material by <em>discipline</em> — history,
+geometry, probability, cryptanalysis, complexity. This page slices it by
+<em>time</em>. Every card below is a result the paper leans on, placed in the
+year it happened, in one of four running stories; the arrows mark who built on
+whom (<span style="color:#2a78d6">solid navy</span>), who broke what
+(<span style="color:#c23b5e">solid wine</span>), and where an idea jumped
+disciplines (<span style="color:#008300">dashed green</span>).</p>
+
+<p>Use it as an alternate table of contents: <strong>every card links to the
+section of the paper where that result does its work</strong>, with chips for
+the bibliography entry and the exact page of the
+<a href="kng256.pdf">typeset PDF</a>. Hover a card to light up its neighborhood
+of influences.</p>
+
+<p class="note">Two long stories to trace top to bottom: follow the navy chain
+from Diffie–Hellman through Merkle–Damgård, MD5 and SHA-1 down to SHA-256 —
+then watch the wine arrows arrive from the left as the ancestors fall. And
+follow the green dashed arrows out of the mathematics lane: carries priced in
+1852, random maps portrayed in 1960 and 1990, p-adic rigidity in 1994 — each
+becoming, decades later, an instrument pointed at this one function.</p>
+
+<figure class="viz-figure">
+  <div class="viz" id="xp-timeline" style="overflow-x:auto"></div>
+  <figcaption>Fifty results, four running stories, one function. Cards link
+  into the paper; the vertical axis is calendar time (the nineteenth-century
+  prelude is compressed). This chart is hand-curated from the paper's
+  bibliography — arrows mark influences the text itself discusses, not a
+  complete citation graph.</figcaption>
+</figure>
+
+<p class="note">Missing arrows are not claims of independence — only the
+influences the paper narrates are drawn. For the full clustered bibliography
+with section-level backreferences, see the
+<a href="bibliography.html">references page</a>.</p>
+
+<div id="pagenav"></div>
+</main>
+</div>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script defer src="assets/site.js"></script>
+<script defer src="assets/timeline.js"></script>
+</body>
+</html>

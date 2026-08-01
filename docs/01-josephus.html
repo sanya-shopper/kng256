@@ -44,6 +44,20 @@ happens if every <em>third</em> person is eliminated instead? We will not
 answer it until <a class="xref" href="04-random-maps.html#sec:josephus3">§4.4</a>, where it becomes a parable about
 the constants in <span class="sha">SHA-256</span>&rsquo;s own definition.)</p>
 
+<figure class="viz-figure viz-extra">
+  <details class="viz-details" open>
+    <summary>Interactive: does counting to three collapse too?</summary>
+    <div class="viz" id="viz-josephusk"></div>
+  </details>
+  <figcaption>The elimination game with step \(k\). For \(k=2\) the survivor is
+  exactly a one-bit rotation of \(n\) (the green <span class="sha">MATCH</span>
+  holds for every \(n\)); for \(k=3,4,5\) no window-rotation matches anywhere
+  below \(n=200\)—the clean sawtooth dissolves into a curve that obeys only
+  the recurrence. Not every iteration collapses to a one-line bit formula;
+  that it happens at all is the surprise (<a class="xref" href="#conj:nocollapse">Conjecture 1.1</a>).
+  <em>(Interactive; site-only, not in the PDF.)</em></figcaption>
+</figure>
+
 <figure class="viz-figure" id="fig:josephus">
   <div class="viz" id="viz-josephus"></div>
   <figcaption><strong>Figure 1.</strong> Circular decimation for \(n=10\), read left to right; the
@@ -53,6 +67,14 @@ the constants in <span class="sha">SHA-256</span>&rsquo;s own definition.)</p>
   \(n = 10 = (1010)_2\).
     <a class="pdf-ref" href="kng256.pdf#page=3">static version: PDF p. 3</a></figcaption>
 </figure>
+<figure class="viz-figure viz-extra">
+  <details class="viz-details" open>
+    <summary>Interactive: the confession, plotted</summary>
+    <div class="viz" id="viz-jpattern"></div>
+  </details>
+  <figcaption>Left: the survivor number \(J(n)\) for \(n = 1,\dots,127\) — the self-similar sawtooth an afternoon of staring reveals. Right: the low seven bits of <span class="sha">SHA-256</span>\((n)\) over the same range — the pattern a quarter-century of staring has not revealed. <em>(Interactive; site-only, not in the PDF.)</em></figcaption>
+</figure>
+
 
 <p>Dwell for a moment on what <em>kind</em> of fact this is. The problem is
 defined <em>iteratively</em>: the survivor is specified as the outcome of
@@ -89,7 +111,10 @@ known about <span class="sha">SHA-256</span>&rsquo;s internals is a statement ab
 xor-of-rotation maps (<a class="xref" href="03-geometry.html#sec:rivest">§3.5</a>).</p>
 
 <figure class="viz-figure viz-extra">
-  <div class="viz" id="viz-bitops"></div>
+  <details class="viz-details" open>
+    <summary>Interactive: try the machine’s moves</summary>
+    <div class="viz" id="viz-bitops"></div>
+  </details>
   <figcaption>Try the machine&rsquo;s moves: rotate, shift, ⊕ and ⊞ on a 32-bit word, live. (Interactive; not in the PDF.)</figcaption>
 </figure>
 
@@ -158,5 +183,6 @@ small, and measurable is the research program of this note.</p>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 <script defer src="assets/site.js"></script>
 <script defer src="assets/viz.js"></script>
+<script defer src="assets/labs-geometry.js"></script>
 </body>
 </html>

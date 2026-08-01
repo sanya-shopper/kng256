@@ -226,7 +226,7 @@ the post-2000 designs, including the sponge construction underlying
 SHA-3 <a class="cite" href="bibliography.html#BDPV2007">(Bertoni et al., 2007)</a>. But it means the rest of this paper may honestly
 focus on the finite object \(f\).</p>
 
-<h2 id="sec:statespace">3.2&ensp;The state space and its two rival geometries <a class="pdf-ref" href="kng256.pdf#page=12">PDF p. 12</a></h2>
+<h2 id="sec:statespace">3.2&ensp;The state space and its two rival geometries <a class="pdf-ref" href="kng256.pdf#page=12">PDF p. 12</a> <a class="live-ref" href="explorer.html" title="Watch the two geometries couple, round by round">live: round explorer</a></h2>
 
 <p>The state space is
 \[
@@ -302,6 +302,14 @@ due to Anashin, characterizing when such maps act
 measure-preservingly or ergodically on \(\mathbb{Z}_2\) <a class="cite" href="bibliography.html#Anashin2006">(Anashin, 2006)</a>.
 Rotations, by contrast, are \(\Ftwo\)-linear but violently discontinuous
 \(2\)-adically: they let high-order bits influence low-order ones.</p>
+<figure class="viz-figure viz-extra">
+  <details class="viz-details" open>
+    <summary>Interactive: the 2-adic lens as a picture</summary>
+    <div class="viz" id="viz-ultrametric"></div>
+  </details>
+  <figcaption>Group the \(8\)-bit space into balls (columns = residues mod \(2^k\)), apply one machine operation, and shade each point by the ball it lands in. Solid columns: the operation maps balls into balls — \(1\)-Lipschitz, a T-function step. Shattered columns: high bits leak downward and the ultrametric is violated. \(\boxplus\), \(\oplus\) and the T-function stay tame at every depth; rotation and shift do the shattering. <em>(Interactive; site-only, not in the PDF.)</em></figcaption>
+</figure>
+
 
 <p>The \(2\)-adic lens is not an ad hoc bookkeeping device; it opens onto a
 genuine subject. Nonarchimedean dynamics—the iteration theory of
@@ -492,7 +500,7 @@ alternation, and <a class="xref" href="02-history.html#sec:falling">§2.3</a> sh
   <div class="project-meta"><em>Prerequisites:</em> elementary number theory; curiosity about \(p\)-adic numbers &ensp; <em>Window:</em> 3–4 weeks</div>
 </div>
 
-<h2 id="sec:roundshape">3.3&ensp;The compression function, structurally <a class="pdf-ref" href="kng256.pdf#page=16">PDF p. 16</a></h2>
+<h2 id="sec:roundshape">3.3&ensp;The compression function, structurally <a class="pdf-ref" href="kng256.pdf#page=16">PDF p. 16</a> <a class="live-ref" href="explorer.html#stage-rounds" title="Step through the 64 rounds on a message you type">live: step the rounds</a></h2>
 
 <p>We describe \(f\) at the level of shape; the full specification fits on two
 pages of National Institute of Standards and Technology <a class="cite" href="bibliography.html#FIPS180-4">(2015)</a> (with an accessible pseudocode rendering
@@ -627,7 +635,10 @@ apparently produces a completely structureless map is the central mystery
 this paper wants to sell.</p>
 
 <figure class="viz-figure viz-extra">
-  <div class="viz" id="viz-avalanche"></div>
+  <details class="viz-details" open>
+    <summary>Interactive: live avalanche</summary>
+    <div class="viz" id="viz-avalanche"></div>
+  </details>
   <figcaption>Live avalanche: the SHA-256 compression function computed in your browser. Flip one input bit and watch the two computations diverge, round by round. (Interactive; not in the PDF.)</figcaption>
 </figure>
 
@@ -787,6 +798,14 @@ inverses. The asymmetry of sparseness is the striking part: three
 rotations to stir, seventeen to unstir—more than half of the
 thirty-two possible offsets. Invertible is not the same as symmetrically
 cheap, even inside the linear layer.</p>
+<figure class="viz-figure viz-extra">
+  <details class="viz-details" open>
+    <summary>Interactive: seventeen rotations undo three</summary>
+    <div class="viz" id="viz-sigmainv"></div>
+  </details>
+  <figcaption>Theorem 3.4, executed on demand: apply \(\Sigma_0\) (three rotations) to any word, then the seventeen-term xor of rotations of equation (2), and watch the word come back. The same works for \(\Sigma_1\). <em>(Interactive; site-only, not in the PDF.)</em></figcaption>
+</figure>
+
 
 <p>The ring picture yields more than the inverses; it computes the whole
 multiplicative life of these maps, essentially by hand. Composition of

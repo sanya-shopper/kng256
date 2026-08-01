@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Round explorer — SHA-256 as a Mathematical Object</title>
+<meta name="description" content="Step through SHA-256 round by round: padding, message schedule, and the rippling a–h registers — with every operation colored by which geometry it respects.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="explorer.html">
+<div class="layout">
+<nav id="sidebar"></nav>
+<main id="content">
+<header class="page-head">
+  <p class="doc-title"><a href="index.html">SHA-256 as a Mathematical Object</a></p>
+</header>
+
+<h1 id="explorer">The machine, running: a round-by-round explorer</h1>
+
+<p>This page runs the actual \(\SHA\) compression function on a message you type,
+and lets you watch the internal state ripple, one round at a time. The format
+follows a small genre of excellent visualizers—<a
+href="https://sha256algorithm.com/">sha256algorithm.com</a>, the terminal
+<a href="https://github.com/in3rsha/sha256-animation">sha256-animation</a>, the
+<a href="https://stepansnigirev.github.io/visual-sha256/">visual SHA-256 calculator</a>—which
+show the eight working registers as rows of bits, shifting and recombining every
+step. What we add is the paper's lens: <em>every operation is colored by which of
+the two rival geometries of <a class="xref" href="03-geometry.html#sec:statespace">§3.2</a>
+it respects</em> <a class="pdf-ref" href="kng256.pdf#page=12">PDF p. 12</a>.</p>
+
+<div class="thmbox remark">
+<p><span class="thm-head">The color code.</span>
+<span class="op-lin"><b>Wine</b></span> marks the \(\Ftwo\)-linear operations
+(\(\shaxor\), rotations, shifts): isometries of the Hamming cube, transparent to
+linear algebra. <span class="op-add"><b>Navy</b></span> marks addition
+\(\shaplus\) modulo \(2^{32}\): continuous in the \(2\)-adic metric, opaque to
+\(\Ftwo\)-linear eyes because of carries. <span class="op-nonlin"><b>Green</b></span>
+marks the genuinely nonlinear boolean votes \(\mathrm{Ch}\) and \(\mathrm{Maj}\).
+Wherever a \(\shaplus\) appears, the <em>carry residue</em> row shows
+\((x \shaplus y) \shaxor (x \shaxor y)\): the exact bits where the two geometries
+disagree—the coupling the whole design leans on
+(<a class="xref" href="07-differential.html#sec:diffcalc">§7.1</a>
+<a class="pdf-ref" href="kng256.pdf#page=44">PDF p. 44</a>).</p>
+</div>
+
+<div class="viz" style="margin:1.2rem 0">
+  <div class="viz-controls">
+    <label for="xp-msg">message&nbsp;</label>
+    <input type="text" id="xp-msg" maxlength="55" size="30" spellcheck="false">
+    <span class="viz-readout">(UTF-8, up to 55 bytes — one block)</span>
+  </div>
+  <div id="xp-check" class="viz-note"></div>
+</div>
+
+<h2 id="stage-flow">The shape of the whole computation</h2>
+<p>Every stage below is one box in this pipeline. The values shown are the
+live ones for <em>your</em> message — change it above and watch them flow.
+Click a box to jump to that stage.</p>
+<figure class="viz-figure">
+  <div class="viz" id="xp-pipeline"></div>
+  <figcaption>One block's journey: bytes are framed into a 512-bit block
+  (<a class="xref" href="03-geometry.html#sec:merkledamgard">§3.1</a>), sixteen words
+  seed the schedule, sixty-four rounds stir the state, and the Davies–Meyer
+  feedforward seals the digest (<a class="xref" href="03-geometry.html#sec:constructions">§3.4</a>).
+  Animated wires show what flows where; colors follow the geometry code above.</figcaption>
+</figure>
+
+<h2 id="stage-padding">Padding: the block the machine actually eats
+  <a class="pdf-ref" href="kng256.pdf#page=11" title="Figure 2 in the paper">PDF p. 11</a></h2>
+<p>Before any arithmetic, the message is framed into a 512-bit block exactly as
+in <a class="xref" href="03-geometry.html#fig:padding">Figure 2</a>: the message
+bytes, the <em>mandatory</em> ‘1’ bit, just enough zeros, and the length.</p>
+<figure class="viz-figure">
+  <div class="viz" id="xp-padding"></div>
+</figure>
+
+<h2 id="stage-schedule">The message schedule: sixteen seeds become sixty-four words
+  <a class="pdf-ref" href="kng256.pdf#page=17" title="Figures 5–6 in the paper">PDF p. 17</a></h2>
+<p>The block's sixteen words seed a recurrence that stretches them to
+sixty-four (<a class="xref" href="03-geometry.html#sec:roundshape">§3.3</a>).
+Click any word to dissect it: the four recurrence terms are shown in the same
+four colors as the computed dependency weave of
+<a class="xref" href="03-geometry.html#fig:schedulegraph">Figure 6</a>, and the
+small badge counts how many of the sixteen data seeds the word depends
+on—watch it saturate at \(W_{26}\), exactly as the paper computes.</p>
+<figure class="viz-figure">
+  <div class="viz" id="xp-schedule"></div>
+</figure>
+
+<h2 id="stage-rounds">Sixty-four rounds: the state ripples
+  <a class="pdf-ref" href="kng256.pdf#page=16" title="§3.3 in the paper">PDF p. 16</a></h2>
+<p>The eight registers \(a,\dots,h\) start at the fractional parts of
+\(\sqrt{2},\dots,\sqrt{19}\) (<a class="xref" href="03-geometry.html#sec:nums">§3.6</a>).
+Each round assembles \(T_1\) and \(T_2\) from the colored ingredients below,
+then shifts every register down one slot—only two slots
+(\(a\) and \(e\)) receive genuinely new material per round; highlighted bits
+are the ones that just changed. Step, scrub, or let it play. The circuit
+diagram shows the round's dataflow with this round's actual values riding
+the wires; the bit table below it shows the same computation bit by bit.</p>
+<figure class="viz-figure">
+  <div class="viz" id="xp-rounds"></div>
+</figure>
+
+<h2 id="stage-odometer">The odometer view: each round is a jump around the circle
+  <a class="pdf-ref" href="kng256.pdf#page=13" title="Figure 4 in the paper">PDF p. 13</a></h2>
+<p>The paper's odometer picture (<a class="xref"
+href="03-geometry.html#fig:odometer">Figure 4</a>) reads the whole state as one
+number on a discrete circle: modular addition \(\shaplus\) is a rotation of a
+\(2^{256}\)-hour clock. Here is that circle with the <em>actual trajectory</em>
+of your message's computation spiraling around it: each compression round
+moves the total forward (navy, clockwise) or backward (wine) to its new
+position, and the trajectory grows outward one ring per round so the path
+stays visible. Scrub the round stepper above and watch the jumps land.</p>
+<figure class="viz-figure">
+  <div class="viz" id="xp-odometer"></div>
+  <figcaption>Rounds as rotations of the odometer. The jumps are astronomical
+  — a typical round moves the total by about \(2^{254}\), a quarter-turn of a
+  circle with \(2^{256}\) positions — and their directions come out as evenly
+  as coin flips: the clock is being <em>spun</em>, not nudged. The honest
+  caveat of <a class="xref" href="03-geometry.html#fig:odometer">Figure 4</a>
+  applies: the machine's true state is eight coupled \(2^{32}\)-clocks, not
+  one big one — switch the dial to a single register to see one small clock's
+  own dance.</figcaption>
+</figure>
+
+<h2 id="stage-ripple">One flipped bit, two metrics
+  <a class="pdf-ref" href="kng256.pdf#page=12" title="§3.2 in the paper">PDF p. 12</a></h2>
+<p>Run the machine twice, on your message and on a twin with a single bit
+flipped, and chart the difference round by round. This is the avalanche of the
+<a class="xref" href="03-geometry.html#viz-avalanche">§3 demo</a> under a
+microscope—and a concrete taste of why the two geometries of
+<a class="xref" href="03-geometry.html#sec:statespace">§3.2</a> are both blind
+once diffusion saturates. Reduced-round attacks
+(<a class="xref" href="07-differential.html#sec:siege">§7.4</a>) live entirely
+in the left margin of this chart, before the blue curve reaches its ceiling.</p>
+<figure class="viz-figure">
+  <div class="viz" id="xp-ripple-heat"></div>
+</figure>
+<figure class="viz-figure">
+  <div class="viz" id="xp-ripple-chart"></div>
+</figure>
+
+<h2 id="stage-digest">The feedforward, and the digest
+  <a class="pdf-ref" href="kng256.pdf#page=18" title="§3.4 in the paper">PDF p. 18</a></h2>
+<p>After round 63 the machine has computed a <em>bijection</em> of the state.
+The digest is not that bijection's output: Davies–Meyer adds the initial value
+back in, register by register (<a class="xref"
+href="03-geometry.html#sec:constructions">§3.4</a>)—the single step that makes
+the map lossy and one-way, as §5.3 explains
+(<a class="xref" href="05-iterated.html#sec:unless">“unless you delete the
+\(\shaplus\)”</a> <a class="pdf-ref" href="kng256.pdf#page=29">PDF p. 29</a>).</p>
+<figure class="viz-figure">
+  <div class="viz" id="xp-digest"></div>
+</figure>
+
+<p class="note">Where to go next: the anatomy of the round function is
+<a class="xref" href="03-geometry.html#sec:roundshape">§3.3</a>; why the ⊞'s
+carry all the nonlinearity over \(\Ftwo\) is
+<a class="xref" href="07-differential.html#sec:diffcalc">§7.1</a>; what it
+would take to <em>measure</em> any deviation from randomness in these pictures
+is <a class="xref" href="06-frameworks.html#sec:disttest">§6.5</a>; and the
+odometer picture of ⊞ is <a class="xref"
+href="03-geometry.html#fig:odometer">Figure 4</a>.</p>
+
+<div id="pagenav"></div>
+</main>
+</div>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script defer src="assets/site.js"></script>
+<script defer src="assets/viz.js"></script>
+<script defer src="assets/explorer.js"></script>
+</body>
+</html>

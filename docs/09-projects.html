@@ -36,6 +36,17 @@ that are a contribution regardless of what they show. That last property
 is worth underlining for research with undergraduates in short windows:
 these are experiments that <em>cannot fail</em>, only surprise.</p>
 
+<figure class="viz-figure viz-extra">
+  <details class="viz-details" open>
+    <summary>Interactive: the thirteen projects as a constellation</summary>
+    <div class="viz" id="viz-projectmap"></div>
+  </details>
+  <figcaption>The projects arranged by home section (across) and heaviest
+  prerequisite (up), with the time window in the badge. Hover for the full row;
+  click to jump to it in the table below; the chips filter map and table
+  together. <em>(Interactive; site-only, not in the PDF.)</em></figcaption>
+</figure>
+
 <table class="paper-table">
   <thead>
     <tr>
@@ -127,6 +138,47 @@ these are experiments that <em>cannot fail</em>, only surprise.</p>
   </tbody>
 </table>
 
+<h2 id="starter-kits">Starter kits: a thirty-second taste of three projects</h2>
+<p>Three of the boxes above have a small first measurement you can run right
+here, on real (scaled-down) <span class="sha">SHA-256</span>, before committing
+a term to them.</p>
+
+<figure class="viz-figure viz-extra">
+  <details class="viz-details" open>
+    <summary>Interactive: the functional-graph atlas, one slice (§4.3)</summary>
+    <div class="viz" id="viz-atlas"></div>
+  </details>
+  <figcaption>The first measurement of the <em>atlas</em> project: measured
+  versus predicted graph invariants for truncated <span class="sha">SHA-256</span>
+  and a random control, with cyclic points tracked round by round. Full widget
+  on the <a href="04-random-maps.html#viz-telescope">§4 page</a>.
+  <em>(Interactive; site-only.)</em></figcaption>
+</figure>
+
+<figure class="viz-figure viz-extra">
+  <details class="viz-details" open>
+    <summary>Interactive: the linear algebra of diffusion (§3.5)</summary>
+    <div class="viz" id="viz-diffusionmatrix"></div>
+  </details>
+  <figcaption>Build your own \(\Sigma_0\)-shaped map on \(8\) or \(16\) bits and
+  see it as an \(\Ftwo\) matrix: rank, invertibility, and multiplicative order
+  by honest Gaussian elimination, beside the real \(32\)-bit \(\Sigma_0\)
+  (rank \(32\), order \(32\)). The rotate/shift toggle demonstrates Rivest's
+  parity theorem. <em>(Interactive; site-only.)</em></figcaption>
+</figure>
+
+<figure class="viz-figure viz-extra">
+  <details class="viz-details" open>
+    <summary>Interactive: a Cayley hash by hand (§6.8)</summary>
+    <div class="viz" id="viz-cayley"></div>
+  </details>
+  <figcaption>A hash as a walk in \(\mathrm{SL}_2(\mathbb{F}_p)\): each message
+  bit multiplies by a generator, animated matrix by matrix. The breadth-first
+  collision finder exhibits the shortest relation between the generators, and
+  the \(p\)-comparison shows shortest collisions growing with the field.
+  <em>(Interactive; site-only.)</em></figcaption>
+</figure>
+
 <p>Three remarks on the program as a whole.</p>
 
 <h3 class="runin">Model organisms.</h3>
@@ -175,5 +227,8 @@ that student time goes to science rather than plumbing.</p>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 <script defer src="assets/site.js"></script>
 <script defer src="assets/viz.js"></script>
+<script defer src="assets/labs-graphs.js"></script>
+<script defer src="assets/labs-geometry.js"></script>
+<script defer src="assets/labs-theory.js"></script>
 </body>
 </html>

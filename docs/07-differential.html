@@ -37,7 +37,7 @@ honest account of where, on <span class="sha">SHA-256</span>, it is currently st
 absorb this section will understand precisely what the “round counts”
 of <a class="xref" href="06-frameworks.html#sec:below">§6.4</a> measure.</p>
 
-<h2 id="sec:diffcalc">7.1&ensp;A calculus of differences <a class="pdf-ref" href="kng256.pdf#page=44">PDF p. 44</a></h2>
+<h2 id="sec:diffcalc">7.1&ensp;A calculus of differences <a class="pdf-ref" href="kng256.pdf#page=44">PDF p. 44</a> <a class="live-ref" href="explorer.html#stage-ripple" title="Twin runs, one flipped bit: Hamming vs 2-adic, round by round">live: twin-run ripple</a></h2>
 
 <p>For a map \(F\) on bit strings and a fixed <em>input difference</em>
 \(\Delta\), consider the discrete derivative
@@ -139,6 +139,20 @@ hashes agree. The attack economy is thus brutally simple: <em>total
 toll</em> \(=\) sum, over all rounds, of active bits at nonlinear gates;
 <em>cost</em> \(\approx 2^{\text{toll}}\); the design’s job is to force
 every possible flight plan to accumulate an unpayable toll.</p>
+
+<figure class="viz-figure viz-extra">
+  <details class="viz-details" open>
+    <summary>Interactive: measure a trail toll, watch trails die</summary>
+    <div class="viz" id="viz-trailtoll"></div>
+  </details>
+  <figcaption>A toy \(8\)-bit ARX round, Monte-Carlo'd live. The measured
+  \(-\log_2 p\) of the modal output difference (solid) rises then flattens
+  against the sampling floor, while the naive single-trail Lipmaa–Moriai
+  prediction (dashed) keeps climbing into a region no sampling can reach—a
+  miniature of why trail probabilities <em>overcount</em>, and why the toll
+  becomes unpayable within a dozen rounds. <em>(Interactive; site-only, not in
+  the PDF.)</em></figcaption>
+</figure>
 
 <figure class="static-figure" id="fig:localcollision">
   <svg viewBox="0 0 620 240" role="img" style="max-width:640px;width:100%;height:auto;display:block;margin:0 auto"
@@ -311,6 +325,14 @@ force&nbsp;<a class="cite" href="bibliography.html#KRS2012">(Khovratovich et al.
 paper with the flat sentence that “there is almost no progress in
 collision attacks on SHA-2 after ASIACRYPT 2015”—a decade of solver
 revolutions purchasing one round.</p>
+<figure class="viz-figure viz-extra">
+  <details class="viz-details" open>
+    <summary>Interactive: the siege map</summary>
+    <div class="viz" id="viz-siege"></div>
+  </details>
+  <figcaption>How far up the \(64\) rounds each attack class has climbed, and when: the free zone, the contested zone, the records of §7.4, and the wall. Hover a bar for the particulars. The frontier has moved one round in the last decade. <em>(Interactive; site-only, not in the PDF.)</em></figcaption>
+</figure>
+
 
 <p>The shape of the stall is worth internalizing, because it is the
 quantitative content of the phrase “security margin.” Rounds \(1\)–\(16\)
@@ -409,5 +431,6 @@ cannot pull out of manufactured randomness.</p>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 <script defer src="assets/site.js"></script>
 <script defer src="assets/viz.js"></script>
+<script defer src="assets/labs-attacks.js"></script>
 </body>
 </html>

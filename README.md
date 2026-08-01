@@ -1,5 +1,10 @@
 # SHA-256 as a Mathematical Object
 
+**Read it here: <https://sanya-shopper.github.io/kng-256/>** — the interactive
+companion site, with the full text, live in-browser visualizations (including a
+[round-by-round explorer](https://sanya-shopper.github.io/kng-256/explorer.html)
+of the compression function), and the typeset PDF.
+
 A LaTeX paper introducing SHA-256 to mathematicians — historically and
 epistemologically first, then geometrically (the state space (ℤ/2³²)⁸ and
 its two rival group structures), then through the analytic combinatorics

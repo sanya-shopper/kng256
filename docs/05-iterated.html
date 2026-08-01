@@ -149,7 +149,7 @@ would be a gross structural signal, a deviation of the exact kind
 of the funnel by necessity; a permutation at the <em>top</em> would be a
 five-alarm anomaly.</p>
 
-<h2 id="sec:unless">5.3&ensp;&ldquo;Unless&hellip;&rdquo;: the one addition that breaks the bijection <a class="pdf-ref" href="kng256.pdf#page=29">PDF p. 29</a></h2>
+<h2 id="sec:unless">5.3&ensp;&ldquo;Unless&hellip;&rdquo;: the one addition that breaks the bijection <a class="pdf-ref" href="kng256.pdf#page=29">PDF p. 29</a> <a class="live-ref" href="explorer.html#stage-digest" title="See the Davies–Meyer feedforward applied to your own message">live: the feedforward</a></h2>
 
 <p>Why is <span class="sha">SHA-256</span> not that anomaly—why does it funnel at all, rather than
 permute? The answer is a single line of its construction, and it is worth
@@ -239,6 +239,20 @@ applies&nbsp;<a class="cite" href="bibliography.html#NIST_SP800132">(Turan et al
 for the defender builds the table for the attacker; salt is what breaks
 the symmetry.</p>
 
+<figure class="viz-figure viz-extra">
+  <details class="viz-details" open>
+    <summary>Interactive: a working time–memory trade-off (with the salt cure)</summary>
+    <div class="viz" id="viz-hellman"></div>
+  </details>
+  <figcaption>A Hellman/rainbow table over \(\varphi_n\) = low \(n\) bits of
+  <span class="sha">SHA-256</span>, built in your browser. Watch coverage
+  saturate below \(100\%\)—the chain-merge tax—then invert real targets and
+  read empirical online cost \(T\) and memory \(M\) against the \(T\,M^2=N^2\)
+  bound. The payoff is the <em>salt each target</em> toggle: one shared table's
+  success collapses to the brute-force floor, exactly the driving of §5.1.
+  <em>(Interactive; site-only, not in the PDF.)</em></figcaption>
+</figure>
+
 <h3 class="runin">Fixed points and short cycles: cheap, sharp predictions.</h3>
 <p>Finally, iteration poses questions with crisp random-model answers that
 are eminently testable at toy scale. How many fixed points—strings
@@ -254,6 +268,15 @@ prediction about a structureless map; a truncated <span class="sha">SHA-256</spa
 many fixed points, or cycles of anomalous length, would be exhibiting
 structure. That nobody has looked, at model-organism scale, is the
 recurring opportunity of this prospectus.</p>
+
+
+<figure class="viz-figure viz-extra">
+  <details class="viz-details" open>
+    <summary>Interactive: the cheap, sharp prediction, tested</summary>
+    <div class="viz" id="viz-fixedpoints"></div>
+  </details>
+  <figcaption>The Poisson(\(1\)) law, tested while you watch: count fixed points \(f(x)=x\) across many truncation dials of real <span class="sha">SHA-256</span> and compare the histogram to \(37\%,\,37\%,\,18\%,\,8\%\). A structureless map must produce this shape; an excess would be front-page structure. <em>(Interactive; site-only, not in the PDF.)</em></figcaption>
+</figure>
 
 <div class="project" id="project-6">
   <div class="project-title">Project 6: The dynamics of iteration</div>
@@ -283,5 +306,6 @@ recurring opportunity of this prospectus.</p>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 <script defer src="assets/site.js"></script>
 <script defer src="assets/viz.js"></script>
+<script defer src="assets/labs-attacks.js"></script>
 </body>
 </html>

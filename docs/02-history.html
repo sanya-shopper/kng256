@@ -141,6 +141,32 @@ pretension.</p>
   <a class="xref" href="06-frameworks.html#sec:frameworks">§6</a>: where does it sit in the space of PRNGs?</dd>
 </dl>
 
+<figure class="viz-figure viz-extra">
+  <details class="viz-details" open>
+    <summary>Interactive: a Merkle tree, with its membership proof</summary>
+    <div class="viz" id="viz-merkle"></div>
+  </details>
+  <figcaption>A Merkle tree over eight editable leaves, every node a real
+  <span class="sha">SHA-256</span> digest. Click a leaf: its three sibling
+  hashes are the <em>entire</em> membership proof. Edit a leaf: exactly the
+  \(\log_2 8 = 3\) nodes above it change, the committed root catches the
+  tamper, and the untouched sibling subtrees reveal nothing about the other
+  leaves. <em>(Interactive; site-only, not in the PDF.)</em></figcaption>
+</figure>
+
+<figure class="viz-figure viz-extra">
+  <details class="viz-details" open>
+    <summary>Interactive: mine a block (real double-SHA proof of work)</summary>
+    <div class="viz" id="viz-powminer"></div>
+  </details>
+  <figcaption>Bitcoin's puzzle in miniature: real \(\SHA(\SHA(\cdot))\) mined
+  in your tab against a leading-zero-bits target, with live hashes/second,
+  attempts against the expected \(2^d\), and a log-scale extrapolation of this
+  machine's time to \(d=32,64,100,128,256\) beside the age of the universe and
+  humanity's cumulative \({\sim}2^{96}\) evaluations. There is no strategy but
+  guessing—which is the point. <em>(Interactive; site-only, not in the PDF.)</em></figcaption>
+</figure>
+
 <p>Note how different the demands of these uses are: fingerprinting needs
 <em>collision resistance</em> (no collision \(x \ne y\) with \(H(x) = H(y)\)
 has ever been <em>published</em>—though note the epistemic fine print:
@@ -216,7 +242,10 @@ the operation that couples the geometries—and iterates the mixture
 carries the design out of reach of every one-line argument above.</p>
 
 <figure class="viz-figure viz-extra">
-  <div class="viz" id="viz-toyhash"></div>
+  <details class="viz-details" open>
+    <summary>Interactive: the ancestral hashes, live</summary>
+    <div class="viz" id="viz-toyhash"></div>
+  </details>
   <figcaption>The ancestral hashes, live: division hashing \(k \bmod 997\), the affine step \((ak+b) \bmod 2^{n}\), and the \(\shaxor\)-step — the one-round baby SHA. (Interactive; not in the PDF.)</figcaption>
 </figure>
 
@@ -259,6 +288,14 @@ conjunction of unproved statements this paper keeps circling. Same
 species as the one-liner, same questions; but every answer has moved
 from a line of algebra to an open problem. The rest of the paper lives
 in that gap.</p>
+<figure class="viz-figure viz-extra">
+  <details class="viz-details" open>
+    <summary>Interactive: the birthday law, run live</summary>
+    <div class="viz" id="viz-birthday"></div>
+  </details>
+  <figcaption>Repeated draws from a \(w\)-bit truncation of <span class="sha">SHA-256</span> collide after about \(\sqrt{\pi N/2} \approx 1.25 \cdot 2^{w/2}\) samples — watch the law assert itself. The same law at \(w=256\) is the \(2^{128}\) birthday wall that every later section leans on. <em>(Interactive; site-only, not in the PDF.)</em></figcaption>
+</figure>
+
 
 <p>The modern era begins with Merkle’s and Damgård’s 1989 work putting
 hash functions on a design principle. Rather than design a function on
@@ -377,5 +414,7 @@ response to exactly this kind of asymmetry. <a href="#fnref1">↩</a></li>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 <script defer src="assets/site.js"></script>
 <script defer src="assets/viz.js"></script>
+<script defer src="assets/labs-theory.js"></script>
+<script defer src="assets/labs-attacks.js"></script>
 </body>
 </html>

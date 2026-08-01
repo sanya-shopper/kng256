@@ -403,6 +403,20 @@ going back to Goldreich and Ron and made sample-optimal by Paninski
 calculus of <a class="xref" href="04-random-maps.html#sec:randommaps">&sect;4</a>: collisions among \(\sqrt{N}\) samples
 are exactly the signal, and \(\sqrt{N}\) is exactly the threshold.</p>
 
+<figure class="viz-figure viz-extra">
+  <details class="viz-details" open>
+    <summary>Interactive: feel the \(\sqrt{N}\) wall</summary>
+    <div class="viz" id="viz-unitester"></div>
+  </details>
+  <figcaption>The optimal uniformity test, run live: count colliding pairs and
+  compare with \(\binom{m}{2}/2^n\). Sweep the sample count \(m\) against a
+  deliberately biased control and watch the rejection threshold sit exactly on
+  the \(\varepsilon\)-scaled \(\sqrt{N}\) wall—while truncated
+  <span class="sha">SHA-256</span> never rejects. For the real \(N=2^{256}\) that
+  wall is at \({\approx}2^{128}\) samples, an information-theoretic barrier no
+  battery can cross. <em>(Interactive; site-only, not in the PDF.)</em></figcaption>
+</figure>
+
 <p>Point this at <span class="sha">SHA-256</span>&rsquo;s \(256\)-bit output distribution (\(N = 2^{256}\)) and
 the ceiling is stark: detecting <em>any</em> constant-\(\varepsilon\)
 deviation of the global output distribution from uniform requires on the
@@ -521,6 +535,15 @@ Where the classical theory lives inside a single algebraic structure,
 (<a class="xref" href="03-geometry.html#sec:statespace">&sect;3.2</a>) precisely so that no analogue of the
 Lidl&ndash;Niederreiter machinery can grip it. That is the trade: the
 theorems stop where the adversary begins.</p>
+
+
+<figure class="viz-figure viz-extra">
+  <details class="viz-details" open>
+    <summary>Interactive: Marsaglia’s stripes vs the cloud</summary>
+    <div class="viz" id="viz-lcglattice"></div>
+  </details>
+  <figcaption>What “solved, weak” looks like: consecutive pairs from a linear congruential generator fall on a few parallel lines — the lattice structure the Lidl–Niederreiter theory computes exactly. The same experiment on a <span class="sha">SHA-256</span> counter stream gives the featureless cloud. No theorem forbids stripes on the right; no one has ever exhibited one. <em>(Interactive; site-only, not in the PDF.)</em></figcaption>
+</figure>
 
 <h3 class="runin">Random permutations and the symmetric group.</h3>
 <p>The second finished theory concerns a different pseudorandom object: a
@@ -890,5 +913,6 @@ in the market; it is the market.</p>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 <script defer src="assets/site.js"></script>
 <script defer src="assets/viz.js"></script>
+<script defer src="assets/labs-theory.js"></script>
 </body>
 </html>
